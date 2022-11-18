@@ -1,0 +1,286 @@
+#background {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  font-family: 'Kalam';
+  background: black;
+}
+
+#gamestart {
+  width: 100%;
+  height: 50%;
+  position: relative;
+  text-align: center;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+
+/* 將 .typing-txt-block 背景圖的圖片以及高度設定好 */
+.typing-txt-block {
+  height: 70vh;
+  display: block;
+  background-image: url(https://p1-tt.byteimg.com/origin/pgc-image/901c206f68df45a1b75f83527524cdfb?from=pc);
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+/* 接下來設定控制背景圖片 .bg-animation 的動態效果 */
+.typing-txt-block.bg-animation {
+  -webkit-animation: bg-animation 20s ease-in-out infinite;
+  animation: bg-animation 20s ease-in-out infinite;
+}
+
+/* -- 背景圖片上下位移 */
+@keyframes bg-animation {
+  0% {
+    background-position: top;
+  }
+
+  50% {
+    background-position: bottom;
+  }
+
+  100% {
+    background-position: top;
+  }
+}
+
+/* 利用 position 的觀念，將文字區塊垂直置中在圖片正中央 */
+.typing-txt-block .container h1 {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  text-transform: uppercase;
+  margin: 0;
+  padding: 0;
+  letter-spacing: 5px;
+  color: transparent;
+  font-weight: bolder;
+  font-size: 30px;
+  font-family: 'Kalam';
+}
+
+/* 再利用偽元素 ::before ，將要呈現的文字顯示以及輸入文字動態效果的 css 樣式寫入 */
+.typing-txt-block .container h1::before {
+  content: attr(data-text);
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  color: black;
+  overflow: hidden;
+  border-right: 1px solid #ffffff;
+  animation: type 3s steps(18), blink 0.5s infinite alternate;
+  -webkit-animation: type 3s steps(18), blink 0.5s infinite alternate;
+  white-space: nowrap;
+}
+
+/* type 的動畫設定： */
+/* -- 在 3 秒內將文字寬度以 18 格從 0% ~ 100% 顯示，只播放一次。 */
+@keyframes type {
+  0% {
+    width: 0%;
+  }
+
+  100% {
+    width: 100%;
+  }
+}
+
+/* 
+blink 的動畫設定：
+ -- 每 0.5s 顯示輸入的閃爍線，並無限播放閃爍線顏色(從透明變為白色) */
+@keyframes blink {
+  from {
+    border-color: transparent;
+  }
+
+  to {
+    border-color: #ffffff;
+  }
+}
+
+#menu {
+  position: absolute;
+  top: 100%;
+  left: 30%;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+#menu1 {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+
+#menu2 {
+  position: absolute;
+  top: 100%;
+  left: 70%;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+
+
+#menu img:hover {
+  width: 250px;
+  height: 250px;
+  box-shadow: 0px 0px 15px rgb(13, 132, 19),
+    0px 0px 15px rgb(129, 233, 10);
+  cursor: pointer;
+}
+
+#menu1 img:hover {
+  width: 250px;
+  height: 250px;
+  box-shadow: 0px 0px 15px rgb(14, 93, 140),
+    0px 0px 15px rgb(10, 200, 233);
+  cursor: pointer;
+}
+
+#menu2 img:hover {
+  width: 250px;
+  height: 250px;
+  box-shadow: 0px 0px 15px rgb(179, 167, 5),
+    0px 0px 15px rgb(251, 255, 2);
+  cursor: pointer;
+}
+
+
+/* 遊戲開始 */
+#startgame {
+  background: black;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  font-family: 'Kalam';
+  text-align: center;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+#gamecontent {
+  width: 1300px;
+  height: 700px;
+  margin: auto;
+  position: relative;
+}
+
+.card {
+  width: 200px;
+  height: 300px;
+  position: relative;
+  float: left;
+  margin: 20px 29.5px;
+  transition: transform 1s;
+  /* 設定子元素在 3D 空間內 */
+  transform-style: preserve-3d;
+  /* transform: scale(1); */
+}
+
+/* .card:active {
+  transform: scale(0.97);
+  transition: transform .2s;
+} */
+
+.card-front {
+  width: 200px;
+  height: 300px;
+  background-image: url('../images/1M.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  position: absolute;
+  /* 設定隱藏背面 */
+  backface-visibility: hidden;
+}
+
+.card-back {
+  width: 100%;
+  height: 100%;
+  background-image: url('../images/k19uJRS.jpg');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  position: absolute;
+  transform: rotateY(180deg);
+  /* 設定隱藏背面 */
+  backface-visibility: hidden;
+}
+
+.card-close {
+  transform: rotateY(180deg);
+}
+
+.mask {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  background: url(../images/mononoke031.jpg) no-repeat center/cover;
+  opacity: 0.5;
+  z-index: 10000;
+  text-align: center;
+}
+
+.list {
+  width: 35vw;
+  height: auto;
+  border: 4px dotted black;
+  background: rgba(255, 255, 255, 0.6);
+  margin: calc(25vh) auto;
+  padding: 10px;
+}
+
+.list h2 {
+  color: black;
+  margin: 30px auto;
+  height: 50px;
+  line-height: 50px;
+}
+
+.list a {
+  text-decoration: none;
+  font-weight: bolder;
+  display: block;
+  color: black;
+  font-family: '俐方體11號';
+}
+
+.list a:hover {
+  color: black;
+}
+
+.list h2:hover {
+  background-color: white;
+  color: black;
+  cursor: pointer;
+}
+
+.btn img {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+}
+
+#con:hover {
+  background-color: rgb(180, 50, 14);
+  color: rgb(255, 255, 255);
+  cursor: pointer;
+}

@@ -1,0 +1,123 @@
+/* 遊戲開始 */
+#startgame {
+  background: black;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  font-family: 'Kalam';
+  text-align: center;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+#gamecontent {
+  width: 1300px;
+  height: 700px;
+  margin: auto;
+  position: relative;
+}
+
+.card {
+  width: 200px;
+  height: 250px;
+  position: relative;
+  float: left;
+  margin: 30px 6px;
+  transition: transform 1s;
+  /* 設定子元素在 3D 空間內 */
+  transform-style: preserve-3d;
+}
+
+.card-front {
+  width: 100%;
+  height: 100%;
+  background-image: url(../images/1S.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  position: absolute;
+  /* 設定隱藏背面 */
+  backface-visibility: hidden;
+}
+
+.card-back {
+  width: 100%;
+  height: 100%;
+  background-image: url('../images/5SB.jpg');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  position: absolute;
+  transform: rotateY(180deg);
+  /* 設定隱藏背面 */
+  backface-visibility: hidden;
+}
+
+.card-close {
+  transform: rotateY(180deg);
+}
+
+.mask {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  /* background: rgb(0, 0, 0); */
+  background: url(../images/SEnd.jpg) no-repeat center/cover;
+  opacity: 0.5;
+  z-index: 10000;
+  text-align: center;
+}
+
+.list {
+  width: 35vw;
+  height: auto;
+  border: 4px dotted black;
+  margin: calc(25vh) auto;
+  padding: 10px;
+  background: rgba(255, 255, 255, 0.6);
+}
+
+.list h2 {
+  color: black;
+  margin: 30px auto;
+  height: 50px;
+  line-height: 50px;
+}
+
+.list a {
+  text-decoration: none;
+  font-weight: bolder;
+  display: block;
+  color: black;
+  font-family: '俐方體11號';
+}
+
+.list a:hover {
+  color: black;
+}
+
+.list h2:hover {
+  background-color: white;
+  color: black;
+  cursor: pointer;
+}
+
+.btn img {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+}
+
+#con:hover {
+  background-color: rgb(14, 116, 180);
+  color: white;
+  cursor: pointer;
+}
+
+#con a:hover{
+  color: white;
+}
+

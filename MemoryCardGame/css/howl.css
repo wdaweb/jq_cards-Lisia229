@@ -1,0 +1,513 @@
+/* 遊戲開始 */
+body {
+  background: black;
+  font-family: 'Noto Sans TC', sans-serif;
+}
+
+#startgame {
+  background: black;
+  width: 99vw;
+  height: 97vh;
+  overflow: hidden;
+  font-family: 'Kalam';
+  text-align: center;
+  position: relative;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+#gamecontent {
+  width: calc(100vw - 30%);
+  background: black;
+  height: 600px;
+  margin: auto;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.card {
+  width: 150px;
+  height: 250px;
+  position: relative;
+  float: left;
+  margin: 10px 6px;
+  transition: transform 1s;
+  /* 設定子元素在 3D 空間內 */
+  transform-style: preserve-3d;
+}
+
+.card-front {
+  width: 100%;
+  height: 100%;
+  background-image: url('../images/1H.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  position: absolute;
+  /* 設定隱藏背面 */
+  backface-visibility: hidden;
+}
+
+.card-back {
+  width: 100%;
+  height: 100%;
+  background-image: url('../images/9H.jpg');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  position: absolute;
+  transform: rotateY(180deg);
+  /* 設定隱藏背面 */
+  backface-visibility: hidden;
+}
+
+.card-close {
+  transform: rotateY(180deg);
+}
+
+.mask {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  /* background: rgb(0, 0, 0); */
+  background: url(../images/howl006.jpg) no-repeat center/cover;
+  opacity: 0.5;
+  z-index: 10000;
+  text-align: center;
+}
+
+.list {
+  width: 35vw;
+  height: auto;
+  border: 4px dotted black;
+  margin: calc(25vh) auto;
+  padding: 10px;
+  background: rgba(255, 255, 255, 0.6);
+}
+
+.list h2 {
+  color: black;
+  margin: 30px auto;
+  height: 50px;
+  line-height: 50px;
+}
+
+.list a {
+  text-decoration: none;
+  font-weight: bolder;
+  display: block;
+  color: black;
+  font-family: 'Noto Sans TC', sans-serif;
+}
+
+.list a:hover {
+  color: black;
+}
+
+.list h2:hover {
+  background-color: white;
+  color: black;
+  cursor: pointer;
+}
+
+.btn img {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+}
+
+#con:hover {
+  background-color: rgb(207, 173, 2);
+  color: white;
+  cursor: pointer;
+}
+
+#con a:hover {
+  color: white;
+}
+
+#back {
+  position: fixed;
+  z-index: 1000;
+}
+
+#back a {
+  display: block;
+}
+
+#back a:hover {
+  cursor: pointer;
+}
+
+#section01 {
+  position: relative;
+  width: 99vw;
+  height: 97vh;
+}
+
+.h-100 {
+  height: 100%;
+}
+
+.container {
+  width: 75%;
+  margin: auto;
+  position: relative;
+}
+
+.p1 {
+  font-size: 24px;
+  padding: 20px;
+  background: white;
+  font-family: 'Noto Sans TC', sans-serif;
+  position: absolute;
+  left: 25%;
+  top: 100px;
+  opacity: 0.5;
+}
+
+.typing-txt-block {
+  height: 97vh;
+  display: block;
+  background-image: url(https://p1-tt.byteimg.com/origin/pgc-image/901c206f68df45a1b75f83527524cdfb?from=pc);
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: fixed;
+  overflow-y: scroll;
+}
+
+.typing-txt-block.bg-animation {
+  -webkit-animation: bg-animation 20s ease-in-out infinite;
+  animation: bg-animation 20s ease-in-out infinite;
+}
+
+@keyframes bg-animation {
+  0% {
+    background-position: top;
+  }
+
+  50% {
+    background-position: bottom;
+  }
+
+  100% {
+    background-position: top;
+  }
+}
+
+.s1 img {
+  width: 400px;
+  box-shadow: -10px 10px 15px white;
+}
+
+.s1 img:hover {
+  box-shadow: -10px 10px 15px rgb(255, 255, 14);
+}
+
+.s1 a:hover {
+  cursor: pointer
+}
+
+
+.s1 {
+  position: absolute;
+  left: 20%;
+  top: 20px;
+}
+
+
+.p2 {
+  font-size: 30px;
+  padding: 20px;
+  font-family: 'Kiwi Maru', serif;
+  position: absolute;
+  left: 40%;
+  top: 30%;
+}
+
+.typing-txt-block .container h1 {
+  position: absolute;
+  top: 30%;
+  left: 65%;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  text-transform: uppercase;
+  margin: 0;
+  padding: 0;
+  letter-spacing: 5px;
+  color: transparent;
+  font-weight: bolder;
+  font-size: 20px;
+  font-family: 'Kalam';
+}
+
+/* 再利用偽元素 ::before ，將要呈現的文字顯示以及輸入文字動態效果的 css 樣式寫入 */
+.typing-txt-block .container h1::before {
+  content: attr(data-text);
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  color: black;
+  overflow: hidden;
+  border-right: 1px solid #ffffff;
+  animation: type 3s steps(18), blink 0.5s infinite alternate;
+  -webkit-animation: type 3s steps(18), blink 0.5s infinite alternate;
+  white-space: nowrap;
+}
+
+/* type 的動畫設定： */
+/* -- 在 3 秒內將文字寬度以 18 格從 0% ~ 100% 顯示，只播放一次。 */
+@keyframes type {
+  0% {
+    width: 0%;
+  }
+
+  100% {
+    width: 100%;
+  }
+}
+
+/* 
+blink 的動畫設定：
+ -- 每 0.5s 顯示輸入的閃爍線，並無限播放閃爍線顏色(從透明變為白色) */
+@keyframes blink {
+  from {
+    border-color: transparent;
+  }
+
+  to {
+    border-color: #ffffff;
+  }
+}
+
+#section02 p {
+  font-size: 20px;
+  font-family: '標楷體';
+  line-height: 25px;
+}
+
+
+.pcon {
+  width: 15%;
+  height: 80px;
+  padding: 5px 20px;
+  overflow: hidden;
+  border: 5px solid rgb(237, 240, 217);
+  background: url(../images/howl043.jpg) no-repeat center/cover;
+  opacity: 0.8;
+  text-align: center;
+  margin: auto;
+  color: black;
+}
+
+.pcon:hover {
+  width: 80%;
+  height: 250px;
+  margin: auto;
+  opacity: 1;
+  color: white;
+  background: url(../images/howl011.jpg);
+  border: 5px solid rgb(46, 56, 68);
+}
+
+#section02 {
+  position: relative;
+  width: 97vw;
+  height: 97vh;
+  color: white;
+  line-height: 1.1rem;
+}
+
+#section03 {
+  position: relative;
+  width: 97vw;
+  height: 100vh;
+  color: white;
+  line-height: 1.2rem;
+}
+
+#section03 .col {
+  /* 可重新計算box總寬度  對width包含了 padding border */
+  box-sizing: border-box;
+  color: white;
+  font-size: 1rem;
+  width: 49%;
+  padding: 5rem 1rem;
+  display: inline-block;
+  /* 只能用在inline-block裡面 */
+  vertical-align: middle;
+}
+
+#section03 .col iframe {
+  width: 100%;
+  height: 300px;
+  padding-top: 10px;
+  border: 5px solid rgba(0, 0, 0, 0.5);
+  box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.8);
+}
+
+#section04 {
+  position: relative;
+  width: 97vw;
+  height: 100vh;
+  color: white;
+  line-height: 1.2rem;
+}
+
+#section04 .row {
+  font-size: 0;
+  width: 100%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+#section04 .col1 {
+  /* 可重新計算box總寬度  對width包含了 padding border */
+  box-sizing: border-box;
+  color: white;
+  font-size: 1rem;
+  width: 100%;
+  padding: 1rem 1rem;
+  display: inline-block;
+  /* 只能用在inline-block裡面 */
+  vertical-align: middle;
+  text-align: center;
+  margin: auto;
+  text-shadow: 5px 5px 10px #333;
+}
+
+
+#section04 .col {
+  /* 可重新計算box總寬度  對width包含了 padding border */
+  box-sizing: border-box;
+  color: white;
+  font-size: 1rem;
+  width: 25%;
+  height: 320px;
+  overflow: hidden;
+  padding: 1rem 2rem;
+  display: inline-block;
+  /* 只能用在inline-block裡面 */
+  vertical-align: middle;
+}
+
+#section04 .col:hover {
+  color: white;
+  font-size: 1rem;
+  width: 25%;
+  height: 320px;
+  padding: 1rem 1rem;
+  overflow: auto;
+  scrollbar-highlight-color: transparent;
+  /* border: 5px solid #333; */
+  color: black;
+  text-indent: 2rem;
+  font-family: 'Kiwi Maru', serif;
+}
+
+::-webkit-scrollbar {
+  width: 7px;
+}
+
+::-webkit-scrollbar-button {
+  background: transparent;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-track-piece {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 4px;
+  background-color: rgba(0, 0, 0, 0.4);
+  border: 1px solid slategrey;
+}
+
+::-webkit-scrollbar-track {
+  box-shadow: transparent;
+}
+
+#section04 .col img {
+  width: 290px;
+  height: 290px;
+  border-radius: 50%;
+  box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.8);
+}
+
+#gallery {
+  width: 2000px;
+  height: 270px;
+  overflow: hidden;
+  position: relative;
+  margin-bottom: 15px;
+}
+
+#imgs {
+  position: absolute;
+  height: 150px;
+}
+
+#imgs img {
+  width: 500px;
+  float: left;
+}
+
+#section05 {
+  position: relative;
+  width: 97vw;
+  height: 100vh;
+  color: white;
+  line-height: 1.2rem;
+}
+
+#section05 .row {
+  font-size: 0;
+  width: 100%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+#section05 .col1 {
+  /* 可重新計算box總寬度  對width包含了 padding border */
+  box-sizing: border-box;
+  color: white;
+  font-size: 1rem;
+  width: 100%;
+  padding: 1rem 1rem;
+  display: inline-block;
+  /* 只能用在inline-block裡面 */
+  vertical-align: middle;
+  text-align: center;
+  margin: auto;
+  text-shadow: 5px 5px 10px #333;
+}
+
+
+#section05 .col {
+  /* 可重新計算box總寬度  對width包含了 padding border */
+  box-sizing: border-box;
+  color: white;
+  font-size: 1rem;
+  width: 25%;
+  height: 320px;
+  overflow: hidden;
+  padding: 1rem 2rem;
+  display: inline-block;
+  /* 只能用在inline-block裡面 */
+  vertical-align: middle;
+}

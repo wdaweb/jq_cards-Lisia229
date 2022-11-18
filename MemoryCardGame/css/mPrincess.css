@@ -1,0 +1,239 @@
+/* 設定html,body抓到瀏覽器高度 */
+html,
+body {
+  height: 100%;
+}
+
+body {
+  font-family: 'Noto Sans TC', sans-serif;
+}
+
+.animate__animated.animate__bounce {
+  --animate-duration: 3s;
+}
+
+/* This changes all the animations globally */
+:root {
+  --animate-duration: 800ms;
+  --animate-delay: 1s;
+}
+
+/* 建立一個寬度一致水平的容器 */
+/* 圖片和我的最頂端的東西切齊，擁有一致性 */
+.container {
+  width: 75%;
+  margin: auto;
+}
+
+/* 讓高度滿版，將區塊與瀏覽器一致 */
+.h-100 {
+  height: 100%;
+}
+
+/* section01 回首頁  */
+
+#section01 {
+  background: url(../images/mononoke014.jpg) no-repeat center/cover;
+  position: relative;
+}
+
+#section01 h1 {
+  font-size: 4rem;
+}
+
+#section01 .main-news {
+  width: 100%;
+  text-align: center;
+  top: 80%;
+  left: 50%;
+  position: absolute;
+  text-shadow: 0 0 15px greenyellow;
+  transform: translate(-50%, -50%);
+}
+
+#section01 .imgsc1 {
+  position: absolute;
+  left: 75%;
+  top: 10%;
+  box-shadow: 0 0 30px #333,
+    0 0 30px red;
+}
+
+#section01 .imgsc1 img:hover {
+  width: 250px;
+}
+
+
+#section02 {
+  background: url(https://www.ghibli.jp/gallery/mononoke046.jpg) no-repeat center/cover;
+}
+
+#section02 .container {
+  height: 100%;
+  position: relative;
+}
+
+#section02 .row {
+  font-size: 0;
+  width: 100%;
+
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+#section02 .col {
+  /* 可重新計算box總寬度  對width包含了 padding border */
+  box-sizing: border-box;
+  color: white;
+  font-size: 1rem;
+  width: 50%;
+  padding: 5rem 1rem;
+  display: inline-block;
+  /* 只能用在inline-block裡面 */
+  vertical-align: middle;
+}
+
+
+#section02 .col h1 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  background: rgba(0, 0, 0, 0.662);
+  padding: 10px;
+}
+
+#section02 .col p {
+  padding: 10px;
+  line-height: 1.5;
+  text-indent: 2rem;
+  letter-spacing: 1px;
+  margin-bottom: 1rem;
+  background: rgba(0, 0, 0, 0.675);
+}
+
+#back{
+  position: fixed;
+  z-index: 1000;
+}
+
+#section02 .col iframe {
+  width: 100%;
+  height: 400px;
+  border: 5px solid rgba(0, 0, 0, 0.5);
+  box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.8);
+}
+
+/* section03角色列表 */
+
+#section03 {
+  background: url(../images/mononoke024.jpg) no-repeat center/cover;
+}
+
+#section03 .col:nth-child(1) {
+  height: 65%;
+}
+
+#section03 .col:nth-child(2) {
+  height: 35%;
+}
+
+/* 上方角色資料 ---------------------*/
+#section03 .role_info>div {
+  display: none;
+  height: 100%;
+}
+
+/* 人物大圖 */
+#section03 .role_info .role {
+  box-sizing: border-box;
+  width: 50%;
+  height: 100%;
+  padding: 5rem 1.5rem 0;
+  /* =>padding: 5rem 1.5rem 0 1.5rem; */
+  float: left;
+}
+
+#section03 .role_info img {
+  width: 100%;
+  height: 100%;
+}
+
+#section03 .role img {
+  position: absolute;
+  width: 600px;
+  height: 400px;
+  top: 25%;
+  left: -8%;
+  border: 5px solid rgba(0, 0, 0, 0.507);
+}
+
+/* 人物資料 */
+#section03 .role_info .info {
+  box-sizing: border-box;
+  width: 50%;
+  height: 100%;
+  padding: 10rem 1rem 5rem;
+  float: right;
+}
+
+
+#section03 .role_info .info h1 {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+  padding: 5px;
+  font-weight: bolder;
+  text-shadow: 5px 5px 15px rgba(255, 255, 255, 0.5);
+}
+
+#section03 .role_info .info p {
+  padding: 1rem;
+  line-height: 1.2;
+  font-size: 18px;
+  font-weight: bold;
+  text-indent: 2rem;
+  background: rgba(255, 255, 255, 0.528);
+}
+
+/* #section03 .role_info input{
+  display: none;
+} */
+
+#section03 .role_info input:checked+div {
+  display: block;
+}
+
+/* 下方角色清單 */
+
+#section03 .role_list {
+  font-size: 0;
+  text-align: left;
+  padding: 7rem 1.5rem 0;
+}
+
+#section03 .role_list label {
+  width: 10%;
+  display: inline-block;
+  margin: 0 0 5px 0;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+#section03 .role_list img {
+  width: 100%;
+}
+
+#section03 .role_list label:hover {
+  filter:
+    drop-shadow(0 0 5px yellow) drop-shadow(0 0 10px yellow);
+}
+
+/* 第四個之後都是目標，做樣式 */
+#section03 .role_list label:nth-child(4)~label {
+  filter: brightness(0.4);
+  cursor: auto;
+}
+
+input {
+  display: none;
+}
